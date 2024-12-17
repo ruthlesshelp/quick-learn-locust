@@ -1,4 +1,4 @@
-# Quick, learn locust
+# Quick, learn Locust
 
 ## Getting Started
 
@@ -71,7 +71,7 @@ locust 2.32.4 from /Users/ ... /.venv/lib/python3.11/site-packages/locust (pytho
 
 Run locust with the following command:
 ```bash
-$ locust [options] [UserClass ...]
+$ locust -f <filename>
 ```
 
 Show help message and configuration info:
@@ -102,7 +102,7 @@ NOTE: Your web interface might be reached as `localhost` instead of `0.0.0.0`.
 
 4. Open http://0.0.0.0:8089
 
-5. Enter the Host as `https://www.google.com` to provide a host name and fill in the rest as shown here:
+5. Enter the Host as `https://en.wikipedia.org` to provide a host name and fill in the rest as shown here:
 
 ![Locust start new load test](Locust-start-new-load-test.jpg)
 
@@ -116,7 +116,7 @@ NOTE: Your web interface might be reached as `localhost` instead of `0.0.0.0`.
 
 ![Locust Hello World charts](Locust-Hello-World-charts.jpg)
 
-NOTE: Google will detect the automated GET requests from Locust and start to return errors.
+NOTE: The site may detect the automated GET requests from Locust and start to return errors.
 
 9. To stop the Locust testing, click the Stop button.
 
@@ -133,3 +133,9 @@ NOTE: Google will detect the automated GET requests from Locust and start to ret
 3. [Quickstart: Create and run a load test by using a Locust script and Azure Load Testing](https://learn.microsoft.com/en-us/azure/load-testing/quickstart-create-run-load-test-with-locust)
 
 4. [Learning Locust: Documentation, Tutorials, Videos](https://www.softwaretestingmagazine.com/tools/learning-locust-documentation-tutorials-videos/)
+
+5. [Performance Testing with Locust](https://dogangunemre.medium.com/performance-testing-of-the-swagger-petstore-api-with-locust-c9a20e7750b1)
+
+# Triangle Application
+
+To continue with the tutorial, open the [Triangle Application](tests/TriangleApplication.md) page.
