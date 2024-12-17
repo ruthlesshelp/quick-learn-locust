@@ -88,12 +88,12 @@ https://docs.locust.io
 
 1. Open the file `locustfile.py`, which is described on this _Your first test_ page: https://docs.locust.io/en/stable/quickstart.html
 
-2. This "HttpUser" will make an HTTP request to `/hello`, then to `/world`, and then repeat.
+2. This "HttpUser" will make an HTTP request to `/flights`, then to `/maps`, and then repeat.
 
 3. In you current directory and then run the `locust` command:
 
 ```bash
-$ locust
+$ locust -f locustfile.py
 [2024-12-17 08:00:13,012] You-Machine-Name/INFO/locust.main: Starting Locust 2.32.4
 [2024-12-17 08:00:13,030] You-Machine-Name/INFO/locust.main: Starting web interface at http://0.0.0.0:8089
 ```
@@ -102,8 +102,34 @@ NOTE: Your web interface might be reached as `localhost` instead of `0.0.0.0`.
 
 4. Open http://0.0.0.0:8089
 
-5. Enter the Host as `https://www.google.com` and the rest as shown here:
+5. Enter the Host as `https://www.google.com` to provide a host name and fill in the rest as shown here:
 
 ![Locust start new load test](Locust-start-new-load-test.jpg)
 
 6. Click the Start button.
+
+7. Assuming everything is working properly, you should see the Statistics tab populate with data related to the test run, such as:
+
+![Locust Hello World statistics](Locust-Hello-World-statistics.jpg)
+
+8. On the Charts tab, you should see charts like these:
+
+![Locust Hello World charts](Locust-Hello-World-charts.jpg)
+
+NOTE: Google will detect the automated GET requests from Locust and start to return errors.
+
+9. To stop the Locust testing, click the Stop button.
+
+10. You are all set to start your Locust learning journey.
+
+11. To exit the Locust web UI, press `ctrl + C` as the keyboard interrupt.
+
+## Other Locust Tutorials
+
+1. Check out the [Locust](https://locust.io/) project page
+
+2. _Quick Tutorial on Locust_ provides information on testing a simple server http://oak.cs.ucla.edu/refs/locust/index.html
+
+3. [Quickstart: Create and run a load test by using a Locust script and Azure Load Testing](https://learn.microsoft.com/en-us/azure/load-testing/quickstart-create-run-load-test-with-locust)
+
+4. [Learning Locust: Documentation, Tutorials, Videos](https://www.softwaretestingmagazine.com/tools/learning-locust-documentation-tutorials-videos/)
