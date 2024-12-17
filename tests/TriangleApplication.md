@@ -4,6 +4,12 @@ This is a classic software testing exercise.
 
 Enter the lengths of the three sides of a triangle. The program will inform you if the triangle is equilateral, isosceles or scalene.
 
+For this example, you will need to install PyQuery
+
+```bash
+$ pip install pyquery
+```
+
 # Triangle v001
 
 Enter the lengths of the three sides of a triangle. The program will inform you if the triangle is equilateral, isosceles or scalene.
