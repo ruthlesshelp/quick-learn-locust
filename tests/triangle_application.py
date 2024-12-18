@@ -1,55 +1,152 @@
-from time import sleep
-from locust import HttpUser, run_single_user, task
+import time
+from locust import constant, events, run_single_user, task
 from pyquery import PyQuery
+from locust_plugins.users.webdriver import WebdriverUser
+from locust_plugins.listeners import RescheduleTaskOnFail
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
-class TriangleApplicationUser(HttpUser):
+class TriangleApplicationUser(WebdriverUser):
     host = "https://testpages.eviltester.com"
 
+    wait_time = constant(2)
+    # webdriver client options can be customized by overriding the option_args
+    option_args = [
+        "--disable-translate",
+        "--disable-extensions",
+        "--disable-background-networking",
+        "--safebrowsing-disable-auto-update",
+        "--disable-sync",
+        "--metrics-recording-only",
+        "--disable-default-apps",
+        "--no-first-run",
+        "--disable-setuid-sandbox",
+        "--hide-scrollbars",
+        "--no-sandbox",
+        "--no-zygote",
+        "--autoplay-policy=no-user-gesture-required",
+        "--disable-notifications",
+        "--disable-logging",
+        "--disable-permissions-api",
+        "--ignore-certificate-errors",
+    ]
+
+    if __name__ == "__main__":
+        # wait a bit at the end to make debugging easier
+        wait_time = constant(5)
+    else:
+        # headless by default if running real locust and not just debugging
+        headless = True
+
+    def on_start(self):
+        self.client.set_window_size(1400, 1000)
+        self.client.implicitly_wait(5)
+
     @task
-    def triangle_page(self):
-        get_response = self.client.get("/styled/apps/triangle/triangle001.html")
-        assert get_response is not None
-        sleep(5)
+    def equilateral_triangle_page(self):
+        self.clear()
+        self.client.start_time = time.monotonic()  # to measure the time from now to first locust_find_element finishes
+        # scenario_start_time = self.client.start_time  # to measure the time for the whole scenario
+        self.client.get("https://testpages.eviltester.com/styled/apps/triangle/triangle001.html")
 
-        breakpoint()
+        side1_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side1", name="Side 1 = 599")
+        side1_input.click()
+        side1_input.send_keys("599")
 
-        pq1 = PyQuery(get_response.content)
-        assert pq1 is not None
+        side2_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side2", name="Side 2 = 599")
+        side2_input.click()
+        side2_input.send_keys("599")
 
-        side1_input = pq1("#side1")
-        assert side1_input is not None
+        side3_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side3", name="Side 3 = 599")
+        side3_input.click()
+        side3_input.send_keys("599")
 
-        side1_input.val("3")
-        side1_val = side1_input.val()
-        assert side1_val == '3'
+        side3_input.send_keys(Keys.RETURN)
+        self.client.implicitly_wait(10)
 
-        side2_input = pq1("#side2")
-        assert side2_input is not None
+        answer_text = self.client.locust_find_element(By.CSS_SELECTOR, "#triangle-type", name="Equilateral")
+        assert answer_text.text == 'Equilateral'
 
-        side2_input.val("4")
-        side2_val = side2_input.val()
-        assert side2_val == '4'
+    @task
+    def isosceles_triangle_page(self):
+        self.clear()
+        self.client.start_time = time.monotonic()  # to measure the time from now to first locust_find_element finishes
+        # scenario_start_time = self.client.start_time  # to measure the time for the whole scenario
+        self.client.get("https://testpages.eviltester.com/styled/apps/triangle/triangle001.html")
 
-        side3_input = pq1("#side3")
-        assert side3_input is not None
+        side1_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side1", name="Side 1 = 311")
+        side1_input.click()
+        side1_input.send_keys("311")
 
-        side3_input.val("5")
-        side3_val = side3_input.val()
-        assert side3_val == '5'
+        side2_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side2", name="Side 2 = 419")
+        side2_input.click()
+        side2_input.send_keys("419")
 
-        post_response = self.client.post(
-            "/",
-            data= {
-                "side1": "3",
-                "side2": "4",
-                "side3": "5"
-            }
-        )
+        side3_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side3", name="Side 3 = 311")
+        side3_input.click()
+        side3_input.send_keys("311")
 
-        pq2 = PyQuery(post_response.content)
+        side3_input.send_keys(Keys.RETURN)
+        self.client.implicitly_wait(10)
 
-        answer_text = pq2("#triangle-type").val()
-        assert answer_text == 'Scalene'
+        answer_text = self.client.locust_find_element(By.CSS_SELECTOR, "#triangle-type", name="Isosceles")
+        assert answer_text.text == 'Isosceles'
+
+    @task
+    def scalene_triangle_page(self):
+        self.clear()
+        self.client.start_time = time.monotonic()  # to measure the time from now to first locust_find_element finishes
+        # scenario_start_time = self.client.start_time  # to measure the time for the whole scenario
+        self.client.get("https://testpages.eviltester.com/styled/apps/triangle/triangle001.html")
+
+        side1_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side1", name="Side 1 = 3")
+        side1_input.click()
+        side1_input.send_keys("3")
+
+        side2_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side2", name="Side 2 = 4")
+        side2_input.click()
+        side2_input.send_keys("4")
+
+        side3_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side3", name="Side 3 = 5")
+        side3_input.click()
+        side3_input.send_keys("5")
+
+        side3_input.send_keys(Keys.RETURN)
+        self.client.implicitly_wait(10)
+
+        answer_text = self.client.locust_find_element(By.CSS_SELECTOR, "#triangle-type", name="Scalene")
+        assert answer_text.text == 'Scalene'
+
+    @task
+    def not_a_triangle_page(self):
+        self.clear()
+        self.client.start_time = time.monotonic()  # to measure the time from now to first locust_find_element finishes
+        # scenario_start_time = self.client.start_time  # to measure the time for the whole scenario
+        self.client.get("https://testpages.eviltester.com/styled/apps/triangle/triangle001.html")
+
+        side1_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side1", name="Side 1 = 1187")
+        side1_input.click()
+        side1_input.send_keys("1187")
+
+        side2_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side2", name="Side 2 = 1319")
+        side2_input.click()
+        side2_input.send_keys("1319")
+
+        side3_input = self.client.locust_find_element(By.CSS_SELECTOR, "#side3", name="Side 3 = 79")
+        side3_input.click()
+        side3_input.send_keys("79")
+
+        side3_input.send_keys(Keys.RETURN)
+        self.client.implicitly_wait(10)
+
+        answer_text = self.client.locust_find_element(By.CSS_SELECTOR, "#triangle-type", name="Error: Not a Triangle")
+        assert answer_text.text == 'Error: Not a Triangle'
+
+
+@events.init.add_listener
+def on_locust_init(environment, **kwargs):
+    RescheduleTaskOnFail(environment)
+
 
 # if launched directly, e.g. "python tests/triangle_application.py", not "locust -f tests/triangle_application.py"
 # This allows for `breakpoint()` for debugging
