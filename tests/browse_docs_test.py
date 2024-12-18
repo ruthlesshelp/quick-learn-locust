@@ -46,7 +46,7 @@ class BrowseDocumentationUser(HttpUser):
     # generally has a quite long waiting time (between
     # 20 and 600 seconds), since there's a bunch of text
     # on each page
-    wait_time = between(2, 60)
+    wait_time = between(20, 600)
 
 
 # if launched directly, e.g. "python tests/browse_docs_test.py", not "locust -f tests/browse_docs_test.py"

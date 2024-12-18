@@ -136,6 +136,6 @@ NOTE: The site may detect the automated GET requests from Locust and start to re
 
 5. [Performance Testing with Locust](https://dogangunemre.medium.com/performance-testing-of-the-swagger-petstore-api-with-locust-c9a20e7750b1)
 
-# Triangle Application
+# Browse Documentation Test
 
-To continue with the tutorial, open the [Triangle Application](tests/TriangleApplication.md) page.
+To continue with the tutorial, open the [Browse Documentation Test](tests/Browse%20Documentation%20Test.md) page.
