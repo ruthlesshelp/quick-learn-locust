@@ -94,8 +94,8 @@ https://docs.locust.io
 
 ```bash
 $ locust -f locustfile.py
-[2024-12-17 08:00:13,012] You-Machine-Name/INFO/locust.main: Starting Locust 2.32.4
-[2024-12-17 08:00:13,030] You-Machine-Name/INFO/locust.main: Starting web interface at http://0.0.0.0:8089
+[2024-12-17 08:00:13,012] Your-Machine-Name/INFO/locust.main: Starting Locust 2.32.4
+[2024-12-17 08:00:13,030] Your-Machine-Name/INFO/locust.main: Starting web interface at http://0.0.0.0:8089
 ```
 
 NOTE: Your web interface might be reached as `localhost` instead of `0.0.0.0`.
