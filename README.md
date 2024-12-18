@@ -88,7 +88,7 @@ https://docs.locust.io
 
 1. Open the file `locustfile.py`, which is described on this _Your first test_ page: https://docs.locust.io/en/stable/quickstart.html
 
-2. This "HttpUser" will make an HTTP request to `/flights`, then to `/maps`, and then repeat.
+2. This "HttpUser" will make an HTTP request to the Wikipedia page `/wiki/Locust`, then to `/wiki/Python`, and then repeat.
 
 3. In you current directory and then run the `locust` command:
 

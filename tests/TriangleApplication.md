@@ -52,6 +52,16 @@ This following test is based on the Locust `examples/webdriver_ex.py` example.
 
 You can find all the `locust-plugin` examples under https://github.com/SvenskaSpel/locust-plugins
 
+## Running the Locust Tests
+
+Our `tests/triangle_application.py` script will simulate a user interacting with the browser.
+
+In you current directory, run the `locust` command:
+
+```bash
+$ locust -f tests/browser_docs_test.py
+```
+
 
 # The Famous Triangle Application
 
