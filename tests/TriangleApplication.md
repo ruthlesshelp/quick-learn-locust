@@ -36,10 +36,19 @@ NOTE: The Locust Plugins 'selenium' is not installed by default, you need to ins
 $ pip install 'locust-plugins[webdriver]'
 ```
 
+## Running Selenium
+
+You need to start Selenium server first. There are many ways to do this.
+
+One way you can run Selenium server is via Docker using the following example command:
+
+```bash
+docker run -e SE_NODE_SESSION_TIMEOUT=60 -e SE_NODE_MAX_SESSIONS=5 -p 4444:4444 -p 7900:7900 --shm-size="2g" --rm seleniarm/standalone-chromium
+```
 
 ## Webdriver Example
 
-This test is based on the Locust `examples/webdriver_ex.py`
+This following test is based on the Locust `examples/webdriver_ex.py` example.
 
 You can find all the `locust-plugin` examples under https://github.com/SvenskaSpel/locust-plugins
 
