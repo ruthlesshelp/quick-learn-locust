@@ -1,6 +1,5 @@
 import time
 from locust import constant, events, run_single_user, task
-from pyquery import PyQuery
 from locust_plugins.users.webdriver import WebdriverUser
 from locust_plugins.listeners import RescheduleTaskOnFail
 from selenium.webdriver.common.by import By
