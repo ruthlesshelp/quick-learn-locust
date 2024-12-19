@@ -37,7 +37,7 @@ When done,run:
 $ deactivate
 ```
 
-### Using pip to install pytest
+### Using pip to install Locust
 
 pip is the tool used to install Python packages, and it is installed as part of
 your Python installation.
@@ -52,12 +52,12 @@ You should see:
 pip 24.0 from /Users/ ... /.venv/lib/python3.11/site-packages/pip (python 3.11)
 ```
 
-Install locust by running:
+Install Locust by running:
 ```bash
 $ pip install locust
 ```
 
-Confirm the locust version by running:
+Confirm the Locust version by running:
 ```bash
 $ locust --version
 ```
@@ -67,9 +67,9 @@ You should see:
 locust 2.32.4 from /Users/ ... /.venv/lib/python3.11/site-packages/locust (python 3.11)
 ```
 
-## Running the locust testing framework
+## Running the Locust testing framework
 
-Run locust with the following command:
+Run Locust with the following command:
 ```bash
 $ locust -f <filename>
 ```
