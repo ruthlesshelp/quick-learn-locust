@@ -90,10 +90,15 @@ https://docs.locust.io
 
 2. This "HttpUser" will make an HTTP request to the Wikipedia page `/wiki/Locust`, then to `/wiki/Python`, and then repeat.
 
-3. In you current directory and then run the `locust` command:
+3. In you current directory, you will run the `locust` command.
 
+Run this:
 ```bash
 $ locust -f locustfile.py
+```
+
+And you should see the following output:
+```bash
 [2024-12-17 08:00:13,012] Your-Machine-Name/INFO/locust.main: Starting Locust 2.32.4
 [2024-12-17 08:00:13,030] Your-Machine-Name/INFO/locust.main: Starting web interface at http://0.0.0.0:8089
 ```
